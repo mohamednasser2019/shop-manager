@@ -15,6 +15,17 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->String('btnPay');
+            $table->String('btnStore');
+            $table->String('btnCustomers');
+            $table->String('btnEmp');
+            $table->String('btnOutGoing');
+            $table->String('btnMabi3at');
+            $table->String('btnCompanies');
+            $table->String('btnRebh');
+            $table->String('btnSetting');
+
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             $table->timestamps();

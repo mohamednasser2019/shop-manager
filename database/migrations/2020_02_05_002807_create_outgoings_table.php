@@ -15,9 +15,9 @@ class CreateOutgoingsTable extends Migration
     {
         Schema::create('outgoings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->String('type');
             $table->double('Value');
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             $table->timestamps();
         });

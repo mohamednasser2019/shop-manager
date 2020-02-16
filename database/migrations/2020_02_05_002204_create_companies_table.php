@@ -24,7 +24,6 @@ class CreateCompaniesTable extends Migration
             $table->double('remain');
 
             $table->integer('user_id')->unsigned();
-
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             
 

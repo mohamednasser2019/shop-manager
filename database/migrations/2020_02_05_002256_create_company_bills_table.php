@@ -26,7 +26,7 @@ class CreateCompanyBillsTable extends Migration
             $table->String('bill_date');
             $table->String('Notes');
 
-            $table->foreign('company_id')->references('id')->on('company')->onDelete('company');
+            $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             
             $table->timestamps();

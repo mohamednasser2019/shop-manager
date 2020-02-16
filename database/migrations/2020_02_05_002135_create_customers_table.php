@@ -15,7 +15,6 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->String('name');
             $table->String('phone');
             $table->String('address');
@@ -23,6 +22,7 @@ class CreateCustomersTable extends Migration
             $table->double('paid_up');
             $table->double('remain');
 
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             
             $table->timestamps();

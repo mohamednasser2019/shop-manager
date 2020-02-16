@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyProductsTable extends Migration
+class CreateBillPoductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateCompanyProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_products', function (Blueprint $table) {
+        Schema::create('bill_poducts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('Bill_num')->unsigned();
+            $table->integer('Bill_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('quantity');
             $table->double('Price');
-            $table->double('total');
-            $table->String('Expiration_Date');
 
-            $table->foreign('Bill_num')->references('bill_num')->on('company_bill')->onDelete('cascade');
+            $table->foreign('Bill_id')->references('id')->on('company_bill')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
             $table->timestamps();
@@ -37,6 +35,6 @@ class CreateCompanyProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_products');
+        Schema::dropIfExists('bill_poducts');
     }
 }
