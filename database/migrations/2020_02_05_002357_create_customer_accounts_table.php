@@ -24,8 +24,11 @@ class CreateCustomerAccountsTable extends Migration
 
             $table->integer('customer_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
+            $table->integer('emp_id')->unsigned();
+            
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });
     }

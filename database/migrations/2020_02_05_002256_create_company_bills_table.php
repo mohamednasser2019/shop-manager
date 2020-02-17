@@ -25,9 +25,11 @@ class CreateCompanyBillsTable extends Migration
             $table->double('Remain');
             $table->String('bill_date');
             $table->String('Notes');
-
-            $table->foreign('company_id')->references('id')->on('company')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->integer('emp_id')->unsigned();
+            
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->timestamps();
         });

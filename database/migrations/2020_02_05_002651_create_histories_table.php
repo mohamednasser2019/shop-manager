@@ -22,7 +22,10 @@ class CreateHistoriesTable extends Migration
             $table->integer('remove_Quantity');
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->integer('emp_id')->unsigned();
+            
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

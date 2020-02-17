@@ -20,10 +20,12 @@ class CreateBillPoductsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('quantity');
             $table->double('Price');
-
-            $table->foreign('Bill_id')->references('id')->on('company_bill')->onDelete('cascade');
+            $table->integer('emp_id')->unsigned();
+            
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('Bill_id')->references('id')->on('company_bills')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

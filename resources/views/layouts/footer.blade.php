@@ -2,7 +2,7 @@
    <!-- BEGIN FOOTER -->
    <div class="page-footer">
       <div class="page-footer-inner">
-          2020 &copy; 4M System.
+          2020 &copy; 4M Systems.
       </div>
       <div class="scroll-to-top">
          <i class="icon-arrow-up"></i>

@@ -27,12 +27,15 @@ class CreateProductsTable extends Migration
             $table->integer('classification_id')->unsigned();
             $table->integer('company_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('Bill_num')->unsigned();
+            $table->integer('company_bill_id')->unsigned();
+             $table->integer('emp_id')->unsigned();
+            
+            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
 
-            $table->foreign('classification_id')->references('id')->on('Store_Classification')->onDelete('cascade');
-    $table->foreign('company_id')->references('id')->on('company')->onDelete('company');
-    $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
-    $table->foreign('Bill_num')->references('bill_num')->on('company_bill')->onDelete('cascade');
+            $table->foreign('classification_id')->references('id')->on('store__classifications')->onDelete('cascade');
+    $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    $table->foreign('company_bill_id')->references('id')->on('company_bills')->onDelete('cascade');
             $table->timestamps();
         });
     }

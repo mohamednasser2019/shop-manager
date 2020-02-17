@@ -25,9 +25,9 @@ class CreatePaymentsTable extends Migration
             $table->integer('bills_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('bills_id')->references('id')->on('bill')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->foreign('bills_id')->references('id')->on('bills')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -25,8 +25,10 @@ class CreateEmployeesTable extends Migration
             $table->integer('age');
             $table->String('date_of_Emp');
             $table->string('emp_img');
-
-            $table->foreign('user_id')->references('id')->on('User')->onDelete('cascade');
+            $table->integer('emp_id')->unsigned();
+            
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
