@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2020 at 10:29 AM
+-- Generation Time: Feb 21, 2020 at 12:41 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -46,6 +46,24 @@ CREATE TABLE `bills` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bill_poducts`
+--
+
+CREATE TABLE `bill_poducts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `Bill_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `Price` double NOT NULL,
+  `emp_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `companies`
 --
 
@@ -63,6 +81,14 @@ CREATE TABLE `companies` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `NAME`, `phone`, `type`, `address`, `paid_up`, `remain`, `user_id`, `emp_id`, `created_at`, `updated_at`) VALUES
+(1, 'شركة النصر للمقاولات', '01201636129', 'مورد', '15 شارع خالد اباظة', 0, 0, 1, 1, '2020-02-19 22:00:00', '2020-02-19 22:00:00'),
+(2, 'شركة الاسراء للمقاولات', '01201636129', 'مورد', '15 شارع خالد اباظة', 0, 0, 1, 1, '2020-02-19 22:00:00', '2020-02-19 22:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -74,17 +100,23 @@ CREATE TABLE `company_bills` (
   `company_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `bill_num` int(11) NOT NULL,
-  `total_bill` double NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `discount` double NOT NULL,
-  `Paied` double NOT NULL,
-  `Remain` double NOT NULL,
-  `bill_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_bill` double NOT NULL DEFAULT 0,
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `discount` double NOT NULL DEFAULT 0,
+  `Paied` double NOT NULL DEFAULT 0,
+  `Remain` double NOT NULL DEFAULT 0,
   `Notes` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `emp_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `company_bills`
+--
+
+INSERT INTO `company_bills` (`id`, `company_id`, `user_id`, `bill_num`, `total_bill`, `quantity`, `discount`, `Paied`, `Remain`, `Notes`, `emp_id`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 1, 0, 0, 0, 0, 0, '', 2, '2020-02-19 22:00:00', '2020-02-19 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -142,10 +174,17 @@ CREATE TABLE `employees` (
   `age` int(11) NOT NULL,
   `date_of_Emp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `emp_img` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emp_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `user_id`, `name`, `id_number`, `phone`, `address`, `salary`, `age`, `date_of_Emp`, `emp_img`, `created_at`, `updated_at`) VALUES
+(1, 1, 'ali mohamed', '295082213226615', '01111651415', '154 sdsfsdfdds sd', 2000, 22, '3-12-1995', '', '2020-02-19 22:00:00', '2020-02-19 22:00:00'),
+(2, 1, 'ali hassan', '295082213223315', '01111651415', '15 s s dsksamsad', 2000, 22, '3-12-1995', '', '2020-02-19 22:00:00', '2020-02-19 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -193,7 +232,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2020_02_05_002357_create_customer_accounts_table', 7),
 (10, '2020_02_05_002651_create_histories_table', 8),
 (11, '2020_02_05_002807_create_outgoings_table', 8),
-(12, '2020_02_05_002904_create_settings_table', 8);
+(12, '2020_02_05_002904_create_settings_table', 8),
+(13, '2020_02_11_210557_create_bill_poducts_table', 9);
 
 -- --------------------------------------------------------
 
@@ -258,7 +298,7 @@ CREATE TABLE `products` (
   `Profit` double NOT NULL,
   `BARCODE` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_added` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Expiration_Date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Expiration_Date` date NOT NULL,
   `classification_id` int(10) UNSIGNED NOT NULL,
   `company_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
@@ -306,6 +346,13 @@ CREATE TABLE `store__classifications` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `store__classifications`
+--
+
+INSERT INTO `store__classifications` (`id`, `user_id`, `name`, `emp_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 'مجمدات', 2, '2020-02-19 22:00:00', '2020-02-19 22:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -342,6 +389,16 @@ ALTER TABLE `bills`
   ADD KEY `bills_emp_id_foreign` (`emp_id`),
   ADD KEY `bills_user_id_foreign` (`user_id`),
   ADD KEY `bills_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `bill_poducts`
+--
+ALTER TABLE `bill_poducts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bill_poducts_emp_id_foreign` (`emp_id`),
+  ADD KEY `bill_poducts_bill_id_foreign` (`Bill_id`),
+  ADD KEY `bill_poducts_product_id_foreign` (`product_id`),
+  ADD KEY `bill_poducts_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `companies`
@@ -466,16 +523,22 @@ ALTER TABLE `bills`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `bill_poducts`
+--
+ALTER TABLE `bill_poducts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `company_bills`
 --
 ALTER TABLE `company_bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -493,7 +556,7 @@ ALTER TABLE `customer_accounts`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `histories`
@@ -505,7 +568,7 @@ ALTER TABLE `histories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `outgoings`
@@ -535,7 +598,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `store__classifications`
 --
 ALTER TABLE `store__classifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -554,6 +617,15 @@ ALTER TABLE `bills`
   ADD CONSTRAINT `bills_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `bills_emp_id_foreign` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `bills_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `bill_poducts`
+--
+ALTER TABLE `bill_poducts`
+  ADD CONSTRAINT `bill_poducts_bill_id_foreign` FOREIGN KEY (`Bill_id`) REFERENCES `company_bills` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `bill_poducts_emp_id_foreign` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `bill_poducts_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `bill_poducts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `companies`
