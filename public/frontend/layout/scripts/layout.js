@@ -5,7 +5,6 @@ var Layout = function () {
     var isIE8 = false;
     var isIE9 = false;
     var isIE10 = false;
-    var isIE11 = false;
 
     var responsive = true;
 
@@ -20,13 +19,9 @@ var Layout = function () {
         isIE8 = !! navigator.userAgent.match(/MSIE 8.0/);
         isIE9 = !! navigator.userAgent.match(/MSIE 9.0/);
         isIE10 = !! navigator.userAgent.match(/MSIE 10.0/);
-        isIE11 = !! navigator.userAgent.match(/MSIE 11.0/);
         
         if (isIE10) {
             jQuery('html').addClass('ie10'); // detect IE10 version
-        }
-        if (isIE11) {
-            jQuery('html').addClass('ie11'); // detect IE11 version
         }
     }
 
@@ -209,11 +204,11 @@ var Layout = function () {
     }
 
     var handleFancybox = function () {
+        jQuery(".fancybox-fast-view").fancybox();
+
         if (!jQuery.fancybox) {
             return;
         }
-        
-        jQuery(".fancybox-fast-view").fancybox();
 
         if (jQuery(".fancybox-button").size() > 0) {            
             jQuery(".fancybox-button").fancybox({
@@ -361,9 +356,7 @@ var Layout = function () {
                     jQuery(".header").removeClass("reduce-header");
                 }
             }
-            
-            NavScrolling();
-            
+            NavScrolling ();
             jQuery(window).scroll(function() {
                 NavScrolling ();
             });

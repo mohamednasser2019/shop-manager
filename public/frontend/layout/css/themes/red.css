@@ -341,7 +341,8 @@ a:hover {
 }
 
 .faq-tabbable {
-  border-left: solid 2px #e44f00;
+  border-right: solid 2px #dd4632; /* RTL */
+  border-left: none; /* RTL */
 }
 .faq-tabbable li:hover a,
 .faq-tabbable li.active a{

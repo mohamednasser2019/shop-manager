@@ -1,11 +1,11 @@
 <!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
+<div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
-	<div class="page-header-inner container">
+	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
 			<a href="index.html">
-			<img src="{{ asset('public/admin/layout2/img/logo-default.png') }}" alt="logo" class="logo-default"/>
+			<img src="{{ asset('public/admin/layout4/img/logo-light.png') }}" width="100" height="40" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -18,42 +18,10 @@
 		<!-- END RESPONSIVE MENU TOGGLER -->
 		<!-- BEGIN PAGE ACTIONS -->
 		<!-- DOC: Remove "hide" class to enable the page header actions -->
-		<div class="page-actions hide">
+		<div class="page-actions">
 			<div class="btn-group">
-				<button type="button" class="btn btn-circle red-pink dropdown-toggle" data-toggle="dropdown">
-				<i class="icon-bar-chart"></i>&nbsp;<span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;<i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="javascript:;">
-						<i class="icon-user"></i> New User </a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-basket"></i> New order </a>
-					</li>
-					<li class="divider">
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:;">
-						<i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-circle green-haze dropdown-toggle" data-toggle="dropdown">
-				<i class="icon-bell"></i>&nbsp;<span class="hidden-sm hidden-xs">Post&nbsp;</span>&nbsp;<i class="fa fa-angle-down"></i>
+				<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li>
@@ -88,9 +56,9 @@
 		<div class="page-top">
 			<!-- BEGIN HEADER SEARCH BOX -->
 			<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-			<form class="search-form search-form-expanded" action="extra_search.html" method="GET">
+			<form class="search-form" action="extra_search.html" method="GET">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search..." name="query">
+					<input type="text" class="form-control input-sm" placeholder="Search..." name="query">
 					<span class="input-group-btn">
 					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
 					</span>
@@ -100,12 +68,14 @@
 			<!-- BEGIN TOP NAVIGATION MENU -->
 			<div class="top-menu">
 				<ul class="nav navbar-nav pull-right">
+					<li class="separator hide">
+					</li>
 					<!-- BEGIN NOTIFICATION DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+					<li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-bell"></i>
-						<span class="badge badge-default">
+						<span class="badge badge-success">
 						7 </span>
 						</a>
 						<ul class="dropdown-menu">
@@ -210,18 +180,20 @@
 						</ul>
 					</li>
 					<!-- END NOTIFICATION DROPDOWN -->
+					<li class="separator hide">
+					</li>
 					<!-- BEGIN INBOX DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+					<li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-envelope-open"></i>
-						<span class="badge badge-default">
+						<span class="badge badge-danger">
 						4 </span>
 						</a>
 						<ul class="dropdown-menu">
 							<li class="external">
 								<h3>You have <span class="bold">7 New</span> Messages</h3>
-								<a href="page_inbox.html">view all</a>
+								<a href="inbox.html">view all</a>
 							</li>
 							<li>
 								<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
@@ -300,12 +272,14 @@
 						</ul>
 					</li>
 					<!-- END INBOX DROPDOWN -->
+					<li class="separator hide">
+					</li>
 					<!-- BEGIN TODO DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+					<li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<i class="icon-calendar"></i>
-						<span class="badge badge-default">
+						<span class="badge badge-primary">
 						3 </span>
 						</a>
 						<ul class="dropdown-menu extended tasks">
@@ -399,31 +373,31 @@
 					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<li class="dropdown dropdown-user">
+					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img alt="" class="img-circle" src="{{ asset('public/admin/layout2/img/avatar3_small.jpg') }}"/>
 						<span class="username username-hide-on-mobile">
-						mohamed nasser </span>
-						<i class="fa fa-angle-down"></i>
+						Nick </span>
+						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+						<img alt="" class="img-circle" src="{{ asset('public/admin/layout4/img/avatar9.jpg') }}"/>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
 								<a href="extra_profile.html">
-								<i class="icon-user"></i>الصفحة الشخصية</a>
+								<i class="icon-user"></i> My Profile </a>
 							</li>
 							<li>
 								<a href="page_calendar.html">
-								<i class="icon-calendar"></i> التقويم </a>
+								<i class="icon-calendar"></i> My Calendar </a>
 							</li>
 							<li>
 								<a href="inbox.html">
-								<i class="icon-envelope-open"></i> الرسائل <span class="badge badge-danger">
+								<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
 								3 </span>
 								</a>
 							</li>
 							<li>
 								<a href="page_todo.html">
-								<i class="icon-rocket"></i> المهمات <span class="badge badge-success">
+								<i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
 								7 </span>
 								</a>
 							</li>
@@ -431,11 +405,11 @@
 							</li>
 							<li>
 								<a href="extra_lock.html">
-								<i class="icon-lock"></i> أغلاق الشاشة </a>
+								<i class="icon-lock"></i> Lock Screen </a>
 							</li>
 							<li>
 								<a href="login.html">
-								<i class="icon-key"></i>تسجيل الخروج</a>
+								<i class="icon-key"></i> Log Out </a>
 							</li>
 						</ul>
 					</li>
@@ -449,3 +423,5 @@
 	<!-- END HEADER INNER -->
 </div>
 <!-- END HEADER -->
+<div class="clearfix">
+</div>

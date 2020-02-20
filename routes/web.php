@@ -11,9 +11,16 @@ Route::group(['prefix' => 'admin'], function ()
 
     Route::get('home', 'Admin\HomeController@home');
 
+    Route::resource('product', 'Admin\productsController');
+    // Route::post('company_Bill', 'Admin\productsController@insertcompany_Bill');
+
 }
 
+
+
 );
+
+Route::resource('company_Bill', 'Admin\productsController');
 
 
 

@@ -21,6 +21,6 @@ class HomeController extends Controller
 // ,compact('data')
 
 		
-		return view('mainPage');
+		return view('Home');
 	}
 }

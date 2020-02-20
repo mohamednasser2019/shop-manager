@@ -1,15 +1,13 @@
-
-   <!-- BEGIN FOOTER -->
-   <div class="page-footer">
-      <div class="page-footer-inner">
-          2020 &copy; 4M Systems.
-      </div>
-      <div class="scroll-to-top">
-         <i class="icon-arrow-up"></i>
-      </div>
-   </div>
-   <!-- END FOOTER -->
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+  <div class="page-footer-inner">
+     2014 &copy; Metronic by keenthemes.
+  </div>
+  <div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
+  </div>
 </div>
+<!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -36,37 +34,29 @@
 <script src="{{ asset('public/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js') }}" type="text/javascript"></script>
 <script src="{{ asset('public/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js') }}" type="text/javascript"></script>
 <script src="{{ asset('public/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/flot/jquery.flot.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/flot/jquery.flot.resize.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/flot/jquery.flot.categories.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/jquery.pulsate.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/bootstrap-daterangepicker/moment.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/bootstrap-daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
 <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
-<script src="{{ asset('public/global/plugins/fullcalendar/fullcalendar.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/global/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/global/plugins/morris/raphael-min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('public/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="{{ asset('public/global/scripts/metronic.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/admin/layout2/scripts/layout.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/admin/layout2/scripts/demo.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/admin/pages/scripts/index.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/admin/layout4/scripts/layout.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/admin/layout4/scripts/demo.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/admin/pages/scripts/index3.js') }}" type="text/javascript"></script>
 <script src="{{ asset('public/admin/pages/scripts/tasks.js') }}" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
+
+
+@yield('scripts')
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    Demo.init(); // init demo features 
-   Index.init();   
-   Index.initDashboardDaterange();
-   Index.initJQVMAP(); // init index page's custom scripts
-   Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts(); // init index page's custom scripts
-   Index.initChat();
-   Index.initMiniCharts();
-   Tasks.initDashboardWidget();
+    Index.init(); // init index page
+ Tasks.initDashboardWidget(); // init tash dashboard widget  
+
+ @yield('scriptDocument')
 });
 </script>
 <!-- END JAVASCRIPTS -->
